@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app='event'>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+	<title>EduNow Aktivitetskalender</title>
+</head>
+<body>
+	<div class='container' ng-controller='eventCtrl'>
+		<h2>Elevlista - EduNow - studentportal <span class="label label-info">{{ eventlist.length }}</span></h2>
+		<br /><br />
+		
+		Sök : <input type='text' ng-model='searchText.name' placeholder="Sök namn" />&nbsp;
+		<input type='text' ng-model='searchText.education' placeholder="Sök utbildning" />&nbsp;
+		<input type='text' ng-model='searchText.city' placeholder="Sök stad" />
+		<a href="" ng-click="setSearchText('')">Visa alla</a>
+		<br /><br />
+	
+	<table class='table table-striped' id='searchTextResults'>
+		<thead>
+			<tr>
+				<th>Förnamn</th>
+				<th>Efternamn</th>
+				<th>Utbildning</th>
+				<th>Stad</th>
+				<th>Email</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input class='form-control' ng-model='event.name'></td>
+				<td><input class='form-control' ng-model='event.lastname'></td>
+				<td><input class='form-control' ng-model='event.education' list='educations' name='education'>
+				<datalist id='educations'>
+					<option value="JavaScriptutvecklare">
+    				<option value="Javautvecklare">
+    				<option value="It-projektledare">
+    			</datalist></td>
+				<td><input class='form-control' ng-model='event.city' list='cities' name='city'>
+				<datalist id='cities'>
+					<option value="Göteborg">
+    				<option value="Stockholm">
+    				<option value="Malmö">
+    				<option value="Umeå">
+    				<option value="Växjö">
+    			</datalist></td>
+				<td><input class='form-control' ng-model='event.email'></td>
+				<td><button class='btn btn-primary' ng-click='addEvent()'>Lägg till</td>
+			</tr>
+			<tr ng-repeat='event in eventlist | filter:searchText'>
+				<td ng-hide="event.edit">
+					<a href="" ng-click="setSearchText(event.name)">{{event.name}}</a>
+				</td>
+        		<td ng-show="event.edit"><input type="text" ng-model="event.name"></td>
+ 
+        		<td ng-hide="event.edit">{{event.lastname}}</td>
+        		<td ng-show="event.edit"><input type="text" ng-model="event.lastname"></td>
+ 
+        		<td ng-hide="event.edit">
+        			<a href="" ng-click="setSearchText(event.education)">{{event.education}}</a>
+        		</td>
+        		<td ng-show="event.edit"><input type="text" ng-model="event.education"></td>
+
+        		<td ng-hide="event.edit">
+        			<a href="" ng-click="setSearchText(event.city)">{{event.city}}</a>
+        		</td>
+        		<td ng-show="event.edit"><input type="text" ng-model="event.city"></td>
+
+        		<td ng-hide="event.edit">{{event.email}}</td>
+        		<td ng-show="event.edit"><input type="text" ng-model="event.email"></td>
+ 
+        		<td ng-hide="event.edit">
+          			<button class="btn btn-success" ng-click="toggleEdit($index)">Ändra</button>
+          			<button class="btn btn-danger" ng-click="deleteEvent($index)">Ta bort</button>
+        		</td>
+        		<td ng-show="event.edit">
+          			<button class="btn btn-primary" ng-click="saveEvent($index)">Spara</button>
+          			<button class="btn btn-danger" ng-click="toggleEdit($index)">Avsluta</button>
+        		</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script src="/controllers/controller.js"></script> 
+
+</body>
+</html>
