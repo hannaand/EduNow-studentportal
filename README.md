@@ -1,22 +1,21 @@
 # [![MEAN Logo](http://mean.io/system/assets/img/logos/meanlogo.png)](http://mean.io/) 
 
-*This is my project for the MEAN stack project with CRUD .*
+*This is my project for the MEAN stack project with CRUD *
 
 For this to work you need [node.js](https://nodejs.org), [npm](https://www.npmjs.com) and [MongoDB](https://www.mongodb.org/) installed.
 
 ###Install project:
 
-```npm install
-   bower install
-```
+1. Download this repository: `git clone https://github.com/hannaand/EduNow-studentportal.git`
+2. Install npm modules: `npm install`
+3. Install bower: `npm install bower -g`
+4. Install bower dependencies `$ bower install`
 
-###Install DB:
+### Running Things
 
-```mongod - mongo - use eventlist```
-
-###Start the server:
-
-```npm src/server.js```
+1. Ensure you have MongoDB installed and running. 
+2. Import a sample dataset: `$ mongod --mongo --db eventlist`
+3. Start up the server: `node src/server.js`
 
 ###Test it:
 
