@@ -12,7 +12,7 @@ For this to work you need [node.js](https://nodejs.org), [npm](https://www.npmjs
 ### Running Things
 
 1. Ensure you have MongoDB installed and running. 
-2. Import a sample dataset: `$ mongod --mongo --db eventlist
+2. Import a sample dataset: `$ mongod --mongo --db eventlist`
 3. Start up the server: `node src/server.js`
 
 ###Test it:
